@@ -1,7 +1,10 @@
 {
     "editor.formatOnSave": true,
+    "editor.detectIndentation": false,
     "[typescriptreact]": {
         "editor.tabSize": 2
     },
-    "editor.detectIndentation": false
+    "[json]": {
+        "editor.tabSize": 2
+    },
 }
