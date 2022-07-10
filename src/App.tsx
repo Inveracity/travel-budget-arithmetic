@@ -9,10 +9,16 @@ function calcBudget(budget: number, days: number, kcb: boolean, scb: boolean) {
   const base = 250
   const know = base + 100
   const supp = 40
+
+  // Base is always selected
   let result = budget + base
+
+  // If knowledge package is selected, calculate that
   if (kcb) {
     result = budget + know
   }
+
+  // Support package is selected, calculate the day fee
   if (scb) {
     result = (supp * days) + result
   }
@@ -45,7 +51,9 @@ function App() {
           <DaySlider />
         </Grid>
 
-        <Checkboxes />
+        <Grid item xs={3}>
+          <Checkboxes />
+        </Grid>
 
 
         <Grid item xs={3}>
