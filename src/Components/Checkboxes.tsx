@@ -23,7 +23,6 @@ const Checkboxes = () => {
     and support are off, turn them both on
     */
     if (!kcb && !supportBoxChecked) {
-      console.log(3)
       setKcb(true)
       setScb(true)
       return
@@ -35,7 +34,6 @@ const Checkboxes = () => {
     turned on.
     */
     if (kcb && !supportBoxChecked) {
-      console.log(4)
       setKcb(kcb)
       setScb(true)
       return

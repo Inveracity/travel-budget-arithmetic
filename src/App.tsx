@@ -1,14 +1,14 @@
-import { Box, Grid, Typography } from '@mui/material';
+import { Box, Divider, Grid, Typography } from '@mui/material';
 import { useContext } from 'react';
 import Checkboxes from './Components/Checkboxes';
 import { BudgetSlider, DaySlider } from './Components/Sliders';
 import { AppContext, AppContextType } from './Context';
 
+const base = 250
+const know = base + 100
+const supp = 40
 
 function calcBudget(budget: number, days: number, kcb: boolean, scb: boolean) {
-  const base = 250
-  const know = base + 100
-  const supp = 40
 
   // Base is always selected
   let result = budget + base
@@ -44,24 +44,45 @@ function App() {
         <Grid item xs={3}>
           <BudgetSlider />
         </Grid>
-        <Typography>
-          Days
-        </Typography>
-        <Grid item xs={3}>
-          <DaySlider />
-        </Grid>
+        {
+          scb &&
+          <>
+            <Typography>
+              Days
+            </Typography>
+            <Grid item xs={3}>
+              <DaySlider />
+            </Grid>
+          </>
+        }
 
         <Grid item xs={3}>
           <Checkboxes />
         </Grid>
 
 
-        <Grid item xs={3}>
+        <Grid item xs={3} >
           <Typography>
-            {`$${calcBudget(budget, days, kcb, scb)}`}
+            {`booking $${budget}`}
           </Typography>
           <Typography>
-            {`Days ${days}`}
+            {`+ commission $${base}`}
+          </Typography>
+          {
+            kcb &&
+            <Typography>
+              {`+ knowledge pack $${know}`}
+            </Typography>
+          }
+          {
+            scb &&
+            <Typography>
+              {`+ support pack $${supp}/day for ${days}`}
+            </Typography>
+          }
+          <Divider />
+          <Typography>
+            {`Total: $${calcBudget(budget, days, kcb, scb)} `}
           </Typography>
         </Grid>
 
