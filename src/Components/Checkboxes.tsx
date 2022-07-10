@@ -2,7 +2,7 @@ import { Checkbox, FormControl, FormControlLabel, FormGroup, FormLabel } from "@
 import { useContext } from "react"
 import { AppContext, AppContextType } from "../Context"
 
-export default () => {
+const Checkboxes = () => {
   const { kcb, setKcb } = useContext(AppContext) as AppContextType
   const { scb, setScb } = useContext(AppContext) as AppContextType
 
@@ -31,5 +31,7 @@ export default () => {
         />
       </FormGroup>
     </FormControl>
-  )
-}
+  );
+};
+
+export default Checkboxes;

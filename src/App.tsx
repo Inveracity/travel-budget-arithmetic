@@ -1,4 +1,4 @@
-import { Box, Checkbox, Grid, Typography } from '@mui/material';
+import { Box, Grid, Typography } from '@mui/material';
 import { useContext } from 'react';
 import Checkboxes from './Components/Checkboxes';
 import { BudgetSlider, DaySlider } from './Components/Sliders';
@@ -6,12 +6,15 @@ import { AppContext, AppContextType } from './Context';
 
 
 function calcBudget(budget: number, days: number, kcb: boolean, scb: boolean) {
-  let result = budget + 200
+  const base = 250
+  const know = base + 100
+  const supp = 40
+  let result = budget + base
   if (kcb) {
-    result = result + 350
+    result = budget + know
   }
   if (scb) {
-    result = (40 * days) + result
+    result = (supp * days) + result
   }
   return result
 }
