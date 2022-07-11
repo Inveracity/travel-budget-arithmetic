@@ -3,19 +3,26 @@ import { Box, colors, Divider, Grid, Stack, Typography } from '@mui/material';
 import { AppContext, AppContextType } from './Context';
 import { BudgetSlider, DaySlider } from './Components/Sliders';
 import Checkboxes from './Components/Checkboxes';
+import { useParams } from 'react-router-dom';
 
-const base = 250
-const know = base + 100
-const supp = 40
+let base = 250
+let know = 100
+let supp = 40
+
+type AppSettings = {
+  basefee: string
+  knowfee: string
+  suppfee: string
+};
+
 
 function calcBudget(budget: number, days: number, kcb: boolean, scb: boolean) {
-
   // Base is always selected
   let result = budget + base
 
   // If knowledge package is selected, calculate that
   if (kcb) {
-    result = budget + know
+    result = budget + base + know
   }
 
   // Support package is selected, calculate the day fee
@@ -27,6 +34,16 @@ function calcBudget(budget: number, days: number, kcb: boolean, scb: boolean) {
 
 function App() {
   const { budget, days, kcb, scb } = useContext(AppContext) as AppContextType
+  const { basefee, knowfee, suppfee } = useParams<AppSettings>();
+  if (basefee) {
+    base = Number(basefee)
+  }
+  if (knowfee) {
+    know = Number(knowfee)
+  }
+  if (suppfee) {
+    supp = Number(suppfee)
+  }
 
   return (
     <Box marginLeft={"10px"} marginRight={"10px"}>
@@ -76,7 +93,7 @@ function App() {
             {
               kcb &&
               <Box>
-                <SummaryText money={know - base} tag={"Knowledge Pack"} />
+                <SummaryText money={know} tag={"Knowledge Pack"} />
               </Box>
             }
             {
