@@ -1,4 +1,4 @@
-import { Checkbox, FormControl, FormControlLabel, FormGroup, FormLabel } from "@mui/material"
+import { Box, Checkbox, FormControl, FormControlLabel, FormGroup, FormLabel } from "@mui/material"
 import { useContext } from "react"
 import { AppContext, AppContextType } from "../Context"
 
@@ -41,29 +41,31 @@ const Checkboxes = () => {
   }
 
   return (
-    <FormControl component="fieldset">
-      <FormLabel component="legend"></FormLabel>
-      <FormGroup aria-label="position" row>
-        <FormControlLabel
-          value="base"
-          control={<Checkbox checked disabled />}
-          label="Base"
-          labelPlacement="top"
-        />
-        <FormControlLabel
-          value="know"
-          control={<Checkbox checked={kcb} disabled={scb} onClick={() => { setKcb(!kcb) }} />}
-          label="Knowledge"
-          labelPlacement="top"
-        />
-        <FormControlLabel
-          value="supp"
-          control={<Checkbox checked={scb} onClick={() => { handleSCB(scb) }} />}
-          label="Support"
-          labelPlacement="top"
-        />
-      </FormGroup>
-    </FormControl>
+    <Box minHeight={"100px"}>
+      <FormControl component="fieldset">
+        <FormLabel component="legend"></FormLabel>
+        <FormGroup aria-label="position" row>
+          <FormControlLabel
+            value="base"
+            control={<Checkbox checked disabled />}
+            label="Booking"
+            labelPlacement="top"
+          />
+          <FormControlLabel
+            value="know"
+            control={<Checkbox checked={kcb} disabled={scb} onClick={() => { setKcb(!kcb) }} />}
+            label="Knowledge"
+            labelPlacement="top"
+          />
+          <FormControlLabel
+            value="supp"
+            control={<Checkbox checked={scb} onClick={() => { handleSCB(scb) }} />}
+            label="Support"
+            labelPlacement="top"
+          />
+        </FormGroup>
+      </FormControl>
+    </Box>
   );
 };
 

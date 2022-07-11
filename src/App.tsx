@@ -30,7 +30,7 @@ function calcBudget(budget: number, days: number, kcb: boolean, scb: boolean) {
     result = (supp * days) + result
   }
   return result
-}
+};
 
 function App() {
   const { budget, days, kcb, scb } = useContext(AppContext) as AppContextType
@@ -54,82 +54,75 @@ function App() {
         alignItems="center"
         justifyContent="center"
         style={{ minHeight: '100vh' }}
-
       >
+        {/* CHECKBOXES */}
         <Grid item xs={3}>
-          <Box minHeight={"100px"}>
-            <Typography>
-              Booking
-            </Typography>
-            <BudgetSlider />
-          </Box>
+          <Checkboxes />
         </Grid>
+        {/* SLIDERS */}
         <Grid item xs={3}>
-          <Box minHeight={"100px"}>
-            {
-              scb &&
-              <>
-                <Typography>
-                  Days
-                </Typography>
-                <DaySlider />
-              </>
-            }
-          </Box>
+          <BudgetSlider />
+        </Grid>
+        <Grid item xs={3} minHeight={"100px"} >
+          {scb && <DaySlider />}
         </Grid>
 
-        <Grid item xs={3}>
-          <Box minHeight={"100px"}>
-            <Checkboxes />
-          </Box>
-        </Grid>
-
-
+        {/* SUMMARY */}
         <Grid item xs={3} >
           <Box minHeight={"150px"} minWidth={"300px"}>
             <SummaryText money={budget} tag={"Booking"} />
             <SummaryText money={base} tag={"Commission"} />
-
-            {
-              kcb &&
-              <Box>
-                <SummaryText money={know} tag={"Knowledge Pack"} />
-              </Box>
-            }
-            {
-              scb &&
-              <Box>
-                <SummaryText money={`${supp} / day for ${days} days`} tag={"Support Pack"} />
-              </Box>
-            }
+            {kcb && <Box>
+              <SummaryText
+                money={know}
+                tag={"Knowledge"} />
+            </Box>}
+            {scb && <Box>
+              <SummaryText
+                money={supp * days}
+                tag={`Support / day for ${days} days`} />
+            </Box>}
           </Box>
 
+          {/* SUM OF CALCULATION */}
           <Divider />
-          <Box minWidth={"300px"} color={colors.green[400]}>
-            <Stack spacing={2} direction={"row"}>
-              <Box minWidth={"200px"} textAlign={"right"}>
-                <Typography variant="overline" align='right'>Total</Typography>
-              </Box>
-              <Box>
-                <Typography variant="overline">{`$${calcBudget(budget, days, kcb, scb)} `}</Typography>
-              </Box>
-            </Stack>
-          </Box>
+
+          <SummaryText money={calcBudget(budget, days, kcb, scb)} tag={"TOTAL"} />
+
         </Grid>
       </Grid>
     </Box>
   );
 }
 
-const SummaryText: React.FC<{ money: number | string, tag: string }> = ({ money, tag }) => {
+const SummaryText: React.FC<{ money: number | string, tag: string, color?: string | undefined }> = ({ money, tag, color }) => {
+  if (!color) {
+    color = colors.blue[400]
+  }
   return (
     <Box>
-      <Stack spacing={2} direction={"row"}>
-        <Box minWidth={"200px"} textAlign={"right"}>
-          <Typography variant="overline" align='right'>{tag}</Typography>
+      <Stack
+        spacing={2}
+        direction={"row"}>
+        <Box
+          minWidth={"200px"}
+          textAlign={"right"}
+          marginRight={"16px"}>
+          <Typography
+            variant="overline"
+            align='right'>
+            {tag}
+          </Typography>
         </Box>
         <Box minWidth={"200px"}>
-          <Typography variant="overline" color={colors.blue[400]}>{`$${money}`}</Typography>
+          <Typography
+            variant="overline"
+            color={color}>
+            {`${money.toLocaleString('en-US', {
+              style: 'currency',
+              currency: 'USD'
+            })}`}
+          </Typography>
         </Box>
       </Stack>
     </Box>

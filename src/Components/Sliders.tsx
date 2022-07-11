@@ -1,4 +1,4 @@
-import { Box, Slider } from "@mui/material";
+import { Box, Slider, Typography } from "@mui/material";
 import { SyntheticEvent, useContext } from "react";
 import { AppContext, AppContextType } from "../Context";
 
@@ -24,19 +24,22 @@ export const BudgetSlider = () => {
   ];
 
   return (
-    <Box sx={{ width: 300 }}>
-      <Slider
-        aria-label="Budget"
-        defaultValue={budget}
-        value={budget}
-        onChange={onChangeHandler}
-        valueLabelDisplay="auto"
-        step={250}
-        min={1000}
-        max={10000}
-        marks={marks}
-      />
-    </Box>
+    <>
+      <Typography textAlign={"center"}>Booking</Typography>
+      <Box sx={{ width: 300 }}>
+        <Slider
+          aria-label="Budget"
+          defaultValue={budget}
+          value={budget}
+          onChange={onChangeHandler}
+          valueLabelDisplay="auto"
+          step={250}
+          min={1000}
+          max={10000}
+          marks={marks}
+        />
+      </Box>
+    </>
   )
 }
 
@@ -51,18 +54,21 @@ export const DaySlider = () => {
   }
 
   return (
-    <Box sx={{ width: 300 }}>
-      <Slider
-        aria-label="Budget"
-        defaultValue={days}
-        value={days}
-        onChange={onChangeHandler}
-        valueLabelDisplay="auto"
-        step={1}
-        min={1}
-        max={30}
-        marks
-      />
+    <Box minHeight={"100px"}>
+      <Typography textAlign={"center"}>Days</Typography>
+      <Box sx={{ width: 300 }}>
+        <Slider
+          aria-label="Budget"
+          defaultValue={days}
+          value={days}
+          onChange={onChangeHandler}
+          valueLabelDisplay="auto"
+          step={1}
+          min={1}
+          max={30}
+          marks
+        />
+      </Box>
     </Box>
   )
 }
