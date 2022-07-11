@@ -14,12 +14,12 @@ export const BudgetSlider = () => {
 
   const marks = [
     {
-      value: 1000,
-      label: '$1,000',
+      value: 0,
+      label: '$0',
     },
     {
-      value: 10000,
-      label: '$10,000',
+      value: 25000,
+      label: '$25,000',
     },
   ];
 
@@ -34,8 +34,8 @@ export const BudgetSlider = () => {
           onChange={onChangeHandler}
           valueLabelDisplay="auto"
           step={250}
-          min={1000}
-          max={10000}
+          min={0}
+          max={25000}
           marks={marks}
         />
       </Box>

@@ -14,7 +14,7 @@ export type AppContextType = {
 export const AppContext = React.createContext<AppContextType | null>(null);
 
 const AppProvider = ({ children }: { children: React.ReactNode }) => {
-  const [budget, setBudget] = React.useState<number>(1000);
+  const [budget, setBudget] = React.useState<number>(0);
   const [days, setDays] = React.useState<number>(1);
   const [kcb, setKcb] = React.useState(false);
   const [scb, setScb] = React.useState(false);
