@@ -29,7 +29,7 @@ function App() {
   const { budget, days, kcb, scb } = useContext(AppContext) as AppContextType
 
   return (
-    <Box marginLeft={"10px"} marginRight={"10px"} minWidth={"300px"}>
+    <Box marginLeft={"10px"} marginRight={"10px"}>
       <Grid
         container
         spacing={0}
@@ -90,7 +90,7 @@ function App() {
           <Divider />
           <Box minWidth={"300px"} color={colors.green[400]}>
             <Stack spacing={2} direction={"row"}>
-              <Box textAlign={"right"}>
+              <Box minWidth={"200px"} textAlign={"right"}>
                 <Typography variant="overline" align='right'>Total</Typography>
               </Box>
               <Box>
