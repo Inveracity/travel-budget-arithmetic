@@ -9,3 +9,15 @@ See the app here:
 [![](https://badgen.net/badge/hosted%20by/railway%20app/purple)](https://railway.app/)
 
 </div>
+
+# Embed
+
+```html
+<iframe
+  width="100%"
+  height="500px"
+  margin="0"
+  frameborder="0"
+  src="https://travel-budget-arithmetic.up.railway.app/250/100/40">
+</iframe>
+```
