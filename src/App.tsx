@@ -1,8 +1,8 @@
-import { Box, colors, Divider, Grid, Stack, Typography } from '@mui/material';
 import { useContext } from 'react';
-import Checkboxes from './Components/Checkboxes';
-import { BudgetSlider, DaySlider } from './Components/Sliders';
+import { Box, colors, Divider, Grid, Stack, Typography } from '@mui/material';
 import { AppContext, AppContextType } from './Context';
+import { BudgetSlider, DaySlider } from './Components/Sliders';
+import Checkboxes from './Components/Checkboxes';
 
 const base = 250
 const know = base + 100
@@ -29,7 +29,7 @@ function App() {
   const { budget, days, kcb, scb } = useContext(AppContext) as AppContextType
 
   return (
-    <Box>
+    <Box marginLeft={"10px"} marginRight={"10px"}>
       <Grid
         container
         spacing={0}
@@ -37,6 +37,7 @@ function App() {
         alignItems="center"
         justifyContent="center"
         style={{ minHeight: '100vh' }}
+
       >
         <Grid item xs={3}>
           <Box minHeight={"100px"}>
@@ -98,8 +99,8 @@ function App() {
             </Stack>
           </Box>
         </Grid>
-      </Grid >
-    </Box >
+      </Grid>
+    </Box>
   );
 }
 

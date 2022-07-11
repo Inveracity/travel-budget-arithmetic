@@ -24,7 +24,7 @@ export const BudgetSlider = () => {
   ];
 
   return (
-    <Box sx={{ width: 500 }}>
+    <Box sx={{ width: 300 }}>
       <Slider
         aria-label="Budget"
         defaultValue={budget}
@@ -51,7 +51,7 @@ export const DaySlider = () => {
   }
 
   return (
-    <Box sx={{ width: 500 }}>
+    <Box sx={{ width: 300 }}>
       <Slider
         aria-label="Budget"
         defaultValue={days}
