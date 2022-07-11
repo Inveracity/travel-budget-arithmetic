@@ -29,7 +29,7 @@ function App() {
   const { budget, days, kcb, scb } = useContext(AppContext) as AppContextType
 
   return (
-    <Box marginLeft={"10px"} marginRight={"10px"}>
+    <Box marginLeft={"10px"} marginRight={"10px"} minWidth={"300px"}>
       <Grid
         container
         spacing={0}
@@ -69,7 +69,7 @@ function App() {
 
 
         <Grid item xs={3} >
-          <Box minHeight={"150px"} minWidth={"300px"}>
+          <Box minHeight={"150px"}>
             <SummaryText money={budget} tag={"Booking"} />
             <SummaryText money={base} tag={"Commission"} />
 
@@ -88,12 +88,12 @@ function App() {
           </Box>
 
           <Divider />
-          <Box minHeight={"100px"} minWidth={"300px"} color={colors.green[400]}>
+          <Box color={colors.green[400]}>
             <Stack spacing={2} direction={"row"}>
-              <Box minWidth={"200px"} textAlign={"right"}>
+              <Box textAlign={"right"}>
                 <Typography variant="overline" align='right'>Total</Typography>
               </Box>
-              <Box minWidth={"200px"}>
+              <Box>
                 <Typography variant="overline">{`$${calcBudget(budget, days, kcb, scb)} `}</Typography>
               </Box>
             </Stack>
@@ -108,10 +108,10 @@ const SummaryText: React.FC<{ money: number | string, tag: string }> = ({ money,
   return (
     <Box>
       <Stack spacing={2} direction={"row"}>
-        <Box minWidth={"200px"} textAlign={"right"}>
+        <Box textAlign={"right"}>
           <Typography variant="overline" align='right'>{tag}</Typography>
         </Box>
-        <Box minWidth={"200px"}>
+        <Box>
           <Typography variant="overline" color={colors.blue[400]}>{`$${money}`}</Typography>
         </Box>
       </Stack>
