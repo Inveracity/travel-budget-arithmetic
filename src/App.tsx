@@ -69,7 +69,7 @@ function App() {
 
 
         <Grid item xs={3} >
-          <Box minHeight={"150px"}>
+          <Box minHeight={"150px"} minWidth={"300px"}>
             <SummaryText money={budget} tag={"Booking"} />
             <SummaryText money={base} tag={"Commission"} />
 
@@ -88,7 +88,7 @@ function App() {
           </Box>
 
           <Divider />
-          <Box color={colors.green[400]}>
+          <Box minWidth={"300px"} color={colors.green[400]}>
             <Stack spacing={2} direction={"row"}>
               <Box textAlign={"right"}>
                 <Typography variant="overline" align='right'>Total</Typography>
@@ -108,10 +108,10 @@ const SummaryText: React.FC<{ money: number | string, tag: string }> = ({ money,
   return (
     <Box>
       <Stack spacing={2} direction={"row"}>
-        <Box textAlign={"right"}>
+        <Box minWidth={"200px"} textAlign={"right"}>
           <Typography variant="overline" align='right'>{tag}</Typography>
         </Box>
-        <Box>
+        <Box minWidth={"200px"}>
           <Typography variant="overline" color={colors.blue[400]}>{`$${money}`}</Typography>
         </Box>
       </Stack>
