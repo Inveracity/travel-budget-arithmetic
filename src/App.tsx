@@ -1,4 +1,4 @@
-import { Box, Divider, Grid, Typography } from '@mui/material';
+import { Box, colors, Divider, Grid, Stack, Typography } from '@mui/material';
 import { useContext } from 'react';
 import Checkboxes from './Components/Checkboxes';
 import { BudgetSlider, DaySlider } from './Components/Sliders';
@@ -38,57 +38,84 @@ function App() {
         justifyContent="center"
         style={{ minHeight: '100vh' }}
       >
-        <Typography>
-          Booking
-        </Typography>
         <Grid item xs={3}>
-          <BudgetSlider />
-        </Grid>
-        {
-          scb &&
-          <>
+          <Box minHeight={"100px"}>
             <Typography>
-              Days
+              Booking
             </Typography>
-            <Grid item xs={3}>
-              <DaySlider />
-            </Grid>
-          </>
-        }
+            <BudgetSlider />
+          </Box>
+        </Grid>
+        <Grid item xs={3}>
+          <Box minHeight={"100px"}>
+            {
+              scb &&
+              <>
+                <Typography>
+                  Days
+                </Typography>
+                <DaySlider />
+              </>
+            }
+          </Box>
+        </Grid>
 
         <Grid item xs={3}>
-          <Checkboxes />
+          <Box minHeight={"100px"}>
+            <Checkboxes />
+          </Box>
         </Grid>
 
 
         <Grid item xs={3} >
-          <Typography>
-            {`booking $${budget}`}
-          </Typography>
-          <Typography>
-            {`+ commission $${base}`}
-          </Typography>
-          {
-            kcb &&
-            <Typography>
-              {`+ knowledge pack $${know}`}
-            </Typography>
-          }
-          {
-            scb &&
-            <Typography>
-              {`+ support pack $${supp}/day for ${days}`}
-            </Typography>
-          }
-          <Divider />
-          <Typography>
-            {`Total: $${calcBudget(budget, days, kcb, scb)} `}
-          </Typography>
-        </Grid>
+          <Box minHeight={"150px"} minWidth={"300px"}>
+            <SummaryText money={budget} tag={"Booking"} />
+            <SummaryText money={base} tag={"Commission"} />
 
-      </Grid>
-    </Box>
+            {
+              kcb &&
+              <Box>
+                <SummaryText money={know - base} tag={"Knowledge Pack"} />
+              </Box>
+            }
+            {
+              scb &&
+              <Box>
+                <SummaryText money={`${supp} / day for ${days} days`} tag={"Support Pack"} />
+              </Box>
+            }
+          </Box>
+
+          <Divider />
+          <Box minHeight={"100px"} minWidth={"300px"} color={colors.green[400]}>
+            <Stack spacing={2} direction={"row"}>
+              <Box minWidth={"200px"} textAlign={"right"}>
+                <Typography variant="overline" align='right'>Total</Typography>
+              </Box>
+              <Box minWidth={"200px"}>
+                <Typography variant="overline">{`$${calcBudget(budget, days, kcb, scb)} `}</Typography>
+              </Box>
+            </Stack>
+          </Box>
+        </Grid>
+      </Grid >
+    </Box >
   );
+}
+
+const SummaryText: React.FC<{ money: number | string, tag: string }> = ({ money, tag }) => {
+  return (
+    <Box>
+      <Stack spacing={2} direction={"row"}>
+        <Box minWidth={"200px"} textAlign={"right"}>
+          <Typography variant="overline" align='right'>{tag}</Typography>
+        </Box>
+        <Box minWidth={"200px"}>
+          <Typography variant="overline" color={colors.blue[400]}>{`$${money}`}</Typography>
+        </Box>
+      </Stack>
+    </Box>
+  )
 }
 
 export default App;
