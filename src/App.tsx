@@ -70,8 +70,8 @@ function App() {
         {/* SUMMARY */}
         <Grid item xs={3} >
           <Box minHeight={"150px"} minWidth={"300px"}>
-            <SummaryText money={budget} tag={"Booking"} />
-            <SummaryText money={base} tag={"Commission"} />
+            <SummaryText money={budget} tag={"Itinerary & Trip Budget"} />
+            <SummaryText money={base} tag={"Service Charge"} />
             {kcb && <Box>
               <SummaryText
                 money={know}
@@ -80,7 +80,7 @@ function App() {
             {scb && <Box>
               <SummaryText
                 money={supp * days}
-                tag={`Support / day for ${days} days`} />
+                tag={`Personalised Support`} />
             </Box>}
           </Box>
 

@@ -15,17 +15,17 @@ export const BudgetSlider = () => {
   const marks = [
     {
       value: 1000,
-      label: '$1.000',
+      label: '$1,000',
     },
     {
       value: 10000,
-      label: '$10.000',
+      label: '$10,000',
     },
   ];
 
   return (
     <>
-      <Typography textAlign={"center"}>Booking</Typography>
+      <Typography textAlign={"center"}>Trip Budget</Typography>
       <Box sx={{ width: 300 }}>
         <Slider
           aria-label="Budget"
