@@ -2,6 +2,7 @@
 
 <h1> Travel Budget Arithmetic </h1>
 
+</div>
 
 # Embed
 
